@@ -74,11 +74,17 @@ async function executarAutomacao(driver, cpfs) {
 }
 
 async function main() {
-    const tentativas = readline.question("Informe o valor máximo dos três primeiros números: ");
-    const faixa = readline.question("Digite os 6 dígitos intermediários do CPF: ");
+    const tentativas = readline.question("Informe o valor maximo dos tres primeiros numeros: ");
+
+    if (tentativas <= 0 || tentativas > 999 || isNaN(tentativas)) {
+        console.log("Por favor, insira um valor entre 1 e 999.");
+        return;
+    }
+
+    const faixa = readline.question("Digite os 6 digitos intermediarios do CPF: ");
 
     if (faixa.length !== 6 || isNaN(faixa)) {
-        console.log("Por favor, insira exatamente 6 dígitos numéricos.");
+        console.log("Por favor, insira exatamente 6 digitos numericos.");
         return;
     }
 
