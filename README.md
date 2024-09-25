@@ -1,9 +1,9 @@
-## Como usar
+# Como usar
 
-# Dependencias:
+## Dependencias:
 - ChromeDriver: choco install chromedriver
 - Node
 
 rode:
-npm install
+npm install <br/>
 node driver.js
