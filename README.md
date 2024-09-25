@@ -16,8 +16,13 @@ choco install nodejs
 run:<br/>
 - npm install<br/>
 
-Descobrir CPF:<br/>
+## Rodando o programa:
+- Descobrir CPF:<br/>
+```bash
 node driver.js<br/>
-
-Macro resetar senha:<br/>
+```
+Macro resetar senha:
+```bash
 node macro.js
+```
+
