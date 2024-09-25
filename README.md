@@ -13,15 +13,17 @@ choco install chromedriver
 choco install nodejs
 ```
 
-run:<br/>
-- npm install<br/>
+- run:
+```bash
+npm install
+```
 
 ## Rodando o programa:
 - Descobrir CPF:<br/>
 ```bash
-node driver.js<br/>
+node driver.js
 ```
-Macro resetar senha:
+- Macro resetar senha:
 ```bash
 node macro.js
 ```
