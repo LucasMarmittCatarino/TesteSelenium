@@ -4,6 +4,6 @@
 - ChromeDriver: choco install chromedriver
 - Node
 
-rode:
-npm install <br/>
+rode:<br/>
+npm install<br/>
 node driver.js
