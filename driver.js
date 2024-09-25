@@ -1,7 +1,6 @@
 const { Builder, By, Key, until } = require('selenium-webdriver');
 const readline = require('readline-sync');
 
-// Função para calcular o dígito verificador do CPF
 function calcularDigito(cpfArray, peso) {
     let soma = 0;
     for (let i = 0; i < cpfArray.length; i++) {
@@ -12,7 +11,6 @@ function calcularDigito(cpfArray, peso) {
     return resto < 2 ? 0 : 11 - resto;
 }
 
-// Função para calcular CPF com faixa
 function calcularCPFComFaixa(tentativas, faixa) {
     const cpfs = [];
     for (let i = 1; i <= tentativas; i++) {
@@ -33,7 +31,7 @@ async function abrirSiteComAutomacao(driver, cpf) {
 
     try {
         let inputs = await driver.wait(until.elementsLocated(By.name('login')), 10000);
-        let textInput = inputs[1]; // Seleciona o segundo input
+        let textInput = inputs[1];
         await textInput.sendKeys(cpf);
 
         let confirmarButton = await driver.findElement(By.id('botao_recuperar_senha'));
@@ -41,28 +39,26 @@ async function abrirSiteComAutomacao(driver, cpf) {
 
         await driver.sleep(5000);
 
-        // Verifica se o pop-up de sucesso apareceu
         let popUpVisible = await driver.findElements(By.css('.alert.alert-success'));
         if (popUpVisible.length > 0) {
-            return { cpf }; // Retorna o CPF se o pop-up aparecer
+            return { cpf };
         }
     } catch (error) {
         console.error(`Erro ao processar CPF ${cpf}:`, error);
     }
-    return null; // Retorna null se não houver pop-up
+    return null;
 }
 
 async function executarAutomacao(driver, cpfs) {
-    const popUps = []; // Array para armazenar os CPFs que geraram pop-ups
+    const popUps = [];
 
     for (let cpf of cpfs) {
         const result = await abrirSiteComAutomacao(driver, cpf);
         if (result) {
-            popUps.push(result.cpf); // Adiciona o CPF ao array se o pop-up aparecer
+            popUps.push(result.cpf);
         }
     }
 
-    // Exibe os CPFs que geraram pop-ups
     if (popUps.length > 0) {
         console.log('Pop-ups destacados:');
         popUps.forEach(cpf => {
@@ -98,5 +94,4 @@ async function main() {
     }
 }
 
-// Chama a função principal
 main().catch(console.error);
