@@ -12,7 +12,7 @@ async function abrirSiteComAutomacao(driver, cpf) {
         let confirmarButton = await driver.findElement(By.id('botao_recuperar_senha'));
         await confirmarButton.click();
 
-        await driver.sleep(5000);
+        await driver.sleep(1000);
     } catch (error) {
         console.error(`Erro ao processar CPF ${cpf}:`, error);
     }
